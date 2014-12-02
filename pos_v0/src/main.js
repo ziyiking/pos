@@ -9,8 +9,8 @@ function printInventory(items) {
                  '，单价：' + item.price.toFixed(2) +
                  '(元)，小计：' + (item.count * item.price).toFixed(2) +
                  '(元)\n';
-                 sum += (item.count * item.price);
-                 }
+    sum += (item.count * item.price);
+  }
 
   var inventoryText =
     '***<没钱赚商店>购物清单***\n' +
