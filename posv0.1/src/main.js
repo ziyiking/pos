@@ -3,20 +3,6 @@ function printInventory(items) {
   var sum = 0 ;
   var cartItems =[];
   var count = 1;
-  //
-  // for(var i = 0; i<items.length; i++){
-  //
-  //     for(var j = 0; j < cartItems.length; j++ ){
-  //       if(cartItems[j].barcode=items[i].barcode){
-  //         cartItems[j].count ++;
-  //       } else {
-  //         cartItems.push({'item':items[i],'count':count});
-  //
-  //       }
-  //
-  //     }
-  // }
-
    for(var i = 0; i < items.length; i++) {
     var item = items[i];
     var cartItem;
@@ -35,15 +21,6 @@ function printInventory(items) {
     }
   }
 
-  // for(var i = 0; i < items.length; i++) {
-  //   var cartItem;
-  //   for
-  //   if (cartItem){
-  //     cartItem.count++;
-  //   }else{
-  //     cartItems.push({item:item,count:count});
-  //   }
-  // }
     for(var k = 0; k<cartItems.length; k++ ){
       var cartItem = cartItems[k];
       itemsText += '名称：' + cartItem.item.name +
