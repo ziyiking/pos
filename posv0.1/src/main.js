@@ -3,24 +3,26 @@ function printInventory(items) {
   var sum = 0 ;
   var cartItems =[];
   var count = 1;
-   for(var i = 0; i < items.length; i++) {
-    var item = items[i];
-    var cartItem;
-    for(var j = 0; j < cartItems.length; j++ ){
-
-      if(cartItems[j].item.barcode === item.barcode){
-        cartItem = cartItems[j];
-      }else{
-        cartItem =null;
-      }
-    }
-    if (cartItem){
-      cartItem.count += count;
-    }else{
-      cartItems.push({'item':item,'count':count});
-    }
-  }
-
+  // var cartItems =[];
+  // var count = 1;
+  //  for(var i = 0; i < items.length; i++) {
+  //   var item = items[i];
+  //   var cartItem;
+  //   for(var j = 0; j < cartItems.length; j++ ){
+  //
+  //     if(cartItems[j].item.barcode === item.barcode){
+  //       cartItem = cartItems[j];
+  //     }else{
+  //       cartItem =null;
+  //     }
+  //   }
+  //   if (cartItem){
+  //     cartItem.count += count;
+  //   }else{
+  //     cartItems.push({'item':item,'count':count});
+  //   }
+  // }
+    cartItems = getcartItem(items, cartItems,count);
     for(var k = 0; k<cartItems.length; k++ ){
       var cartItem = cartItems[k];
       itemsText += '名称：' + cartItem.item.name +
@@ -39,4 +41,26 @@ function printInventory(items) {
   '**********************';
 
   console.log(inventoryText);
+}
+function getcartItem(items,cartItems,count){
+
+  for(var i = 0; i < items.length; i++) {
+    var item = items[i];
+    var cartItem;
+    for(var j = 0; j < cartItems.length; j++ ){
+
+      if(cartItems[j].item.barcode === item.barcode){
+        cartItem = cartItems[j];
+      }else{
+        cartItem =null;
+      }
+    }
+    if (cartItem){
+      cartItem.count += count;
+    }else{
+      cartItems.push({'item':item,'count':count});
+    }
+  }
+
+  return cartItems;
 }
