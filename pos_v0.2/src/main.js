@@ -8,12 +8,17 @@ function printInventory(barcodes) {
 
 
   for(var z = 0; z<barcodes.length; z++  ){
+    var tagArray = barcodes[z].split("-");
+    var barcode = tagArray[0];
+    if (tagArray[1]) {
+      count = parseFloat(tagArray[1]);
+    }
     for(var g = 0; g<loadAllItem.length; g++ ){
-      if(barcodes[z]===loadAllItem[g].barcode){
+      if(barcode === loadAllItem[g].barcode){
         items.push(loadAllItem[g]);
       }
     }
-  }
+}
 
   for(var i = 0; i < items.length; i++) {
     var item = items[i];
