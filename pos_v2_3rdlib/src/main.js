@@ -1,7 +1,7 @@
 function printInventory(tags){
   var cartItems = getCartItems(tags);
-
-  var inventoryText = getInventoryText(cartItems);
+  var inventoryText = Inventory.getInventoryText(cartItems);
+  //var inventoryText = getInventoryText(cartItems);
 
   console.log(inventoryText);
 }
@@ -31,33 +31,33 @@ function getCartItems(tags){
   }
   return cartItems;
 }
-
-function getInventoryText(cartItems){
-
-
-  var currTime = moment().format('YYYY年MM月DD日 HH：mm：ss');
-  var globalPromotions = getGlobalPromotions(cartItems);
-
-  inventoryText = '***<没钱赚商店>购物清单***\n';
-  inventoryText += '打印时间：'+getCurrentDate()+'\n';
-  inventoryText += '----------------------\n';
-  inventoryText += getCartItemsText(cartItems,globalPromotions);
-  inventoryText += '----------------------\n';
-  inventoryText += '挥泪赠送商品：\n';
-  inventoryText += getPromotionsText(globalPromotions);
-  inventoryText += '----------------------\n';
-
-  var totalPrices = getTotalPrices(cartItems);
-
-  var promotionPrice = getPromotionPrice(globalPromotions);
-
-  inventoryText += '总计：' + (totalPrices - promotionPrice).toFixed(2) + '(元)\n';
-  inventoryText += '节省：' + promotionPrice.toFixed(2) + '(元)\n' ;
-  inventoryText += '**********************';
-
-
-  return inventoryText;
-}
+  // Inventory.getInventoryText(cartItems);
+// function getInventoryText(cartItems){
+//
+//
+//   var currTime = moment().format('YYYY年MM月DD日 HH：mm：ss');
+//   var globalPromotions = getGlobalPromotions(cartItems);
+//
+//   inventoryText = '***<没钱赚商店>购物清单***\n';
+//   inventoryText += '打印时间：'+currTime+'\n';
+//   inventoryText += '----------------------\n';
+//   inventoryText += getCartItemsText(cartItems,globalPromotions);
+//   inventoryText += '----------------------\n';
+//   inventoryText += '挥泪赠送商品：\n';
+//   inventoryText += getPromotionsText(globalPromotions);
+//   inventoryText += '----------------------\n';
+//
+//   var totalPrices = getTotalPrices(cartItems);
+//
+//   var promotionPrice = getPromotionPrice(globalPromotions);
+//
+//   inventoryText += '总计：' + (totalPrices - promotionPrice).toFixed(2) + '(元)\n';
+//   inventoryText += '节省：' + promotionPrice.toFixed(2) + '(元)\n' ;
+//   inventoryText += '**********************';
+//
+//
+//   return inventoryText;
+// }
 
 function getGlobalPromotions(cartItems){
   var globalPromotions = [];
@@ -143,19 +143,4 @@ function getGlobalPromotions(cartItems){
     }
 
     return promotionCount;
-  }
-
-  function getCurrentDate(){
-    dateDigitToString = function (num) {
-      return num < 10 ? '0' + num : num;
-    };
-    var currentDate = new Date(),
-    year = dateDigitToString(currentDate.getFullYear()),
-    month = dateDigitToString(currentDate.getMonth() + 1),
-    date = dateDigitToString(currentDate.getDate()),
-    hour = dateDigitToString(currentDate.getHours()),
-    minute = dateDigitToString(currentDate.getMinutes()),
-    second = dateDigitToString(currentDate.getSeconds()),
-    formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
-    return formattedDateString;
   }

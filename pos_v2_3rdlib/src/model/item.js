@@ -4,3 +4,6 @@ function Item(barcode, name, unit, price) {
     this.unit = unit;
     this.price = price || 0.00;
 }
+Item.getItem = function(barcode){
+  return _.find(loadAllItems(),{barcode : barcode});
+};
