@@ -1,6 +1,6 @@
 function printInventory(tags){
   var cartItems = CartItems.getCartItems(tags);
-  var promotion = Promotion.getGlobalPromotions(cartItems);
-  var inventoryText = Inventory.getInventoryText(cartItems);
-  console.log(inventoryText);
+  var inventoryText = new Inventory(cartItems);
+//  var inventoryText = inventoryText.getInventoryText ;
+  console.log(inventoryText.getInventoryText());
 }
