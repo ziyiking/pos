@@ -4,7 +4,7 @@ function Inventory(cart) {
 
 Inventory.getInventoryText = function(cartItems) {
   var currTime = moment().format('YYYY年MM月DD日 HH:mm:ss');
-  var globalPromotions = getGlobalPromotions(cartItems);
+  var globalPromotions = Promotion.getGlobalPromotions(cartItems);
 
   inventoryText = '***<没钱赚商店>购物清单***\n';
   inventoryText += '打印时间：'+currTime+'\n';

@@ -1,86 +1,32 @@
 function printInventory(tags){
   var cartItems = CartItems.getCartItems(tags);
   var inventoryText = Inventory.getInventoryText(cartItems);
-
-  //var inventoryText = getInventoryText(cartItems);
+  var promotion = Promotion.getGlobalPromotions(cartItems);
 
   console.log(inventoryText);
 }
 
-// function getCartItems(tags){
-//   var cartItems = [];
-//   var allItems = loadAllItems();
-//   for(var i = 0; i < tags.length; i++){
-//     var tagArray = tags[i].split("-");
-//     var barcode = tagArray[0];
-//     var count = 1;
-//     if (tagArray[1]) {
-//       count = parseFloat(tagArray[1]);
-//     }
+// function getGlobalPromotions(cartItems){
+//   var globalPromotions = [];
 //
-//     var cartItem = _.find(cartItems, function(cartItem){
-//       return barcode === cartItem.item.barcode;
+//   for(var i = 0; i<cartItems.length; i++){
+//     var promotions = loadPromotions();
+//     var promotion = _.find(promotions,{type:'BUY_TWO_GET_ONE_FREE'});
+//
+//     var promotionBarcode = _.find(promotion.barcodes,function(promotionBarcode){
+//       return promotionBarcode === cartItems[i].item.barcode;
 //     });
-//     if (cartItem) {
-//       cartItem.count += count;
-//     } else {
-//       var item = _.find(allItems, function(item){
-//         return barcode === item.barcode;
-//       });
-//       cartItems.push({item : item, count : count});
+//
+//     if (promotionBarcode) {
+//       globalPromotions.push({
+//         name : cartItems[i].item.name,
+//         number : parseInt(cartItems[i].count / 3),
+//         unit : cartItems[i].item.unit,
+//         price:cartItems[i].item.price});
+//       }
 //     }
+//     return globalPromotions;
 //   }
-//   return cartItems;
-// }
-  // Inventory.getInventoryText(cartItems);
-// function getInventoryText(cartItems){
-//
-//
-//   var currTime = moment().format('YYYY年MM月DD日 HH：mm：ss');
-//   var globalPromotions = getGlobalPromotions(cartItems);
-//
-//   inventoryText = '***<没钱赚商店>购物清单***\n';
-//   inventoryText += '打印时间：'+currTime+'\n';
-//   inventoryText += '----------------------\n';
-//   inventoryText += getCartItemsText(cartItems,globalPromotions);
-//   inventoryText += '----------------------\n';
-//   inventoryText += '挥泪赠送商品：\n';
-//   inventoryText += getPromotionsText(globalPromotions);
-//   inventoryText += '----------------------\n';
-//
-//   var totalPrices = getTotalPrices(cartItems);
-//
-//   var promotionPrice = getPromotionPrice(globalPromotions);
-//
-//   inventoryText += '总计：' + (totalPrices - promotionPrice).toFixed(2) + '(元)\n';
-//   inventoryText += '节省：' + promotionPrice.toFixed(2) + '(元)\n' ;
-//   inventoryText += '**********************';
-//
-//
-//   return inventoryText;
-// }
-
-function getGlobalPromotions(cartItems){
-  var globalPromotions = [];
-
-  for(var i = 0; i<cartItems.length; i++){
-    var promotions = loadPromotions();
-    var promotion = _.find(promotions,{type:'BUY_TWO_GET_ONE_FREE'});
-
-    var promotionBarcode = _.find(promotion.barcodes,function(promotionBarcode){
-      return promotionBarcode === cartItems[i].item.barcode;
-    });
-
-    if (promotionBarcode) {
-      globalPromotions.push({
-        name : cartItems[i].item.name,
-        number : parseInt(cartItems[i].count / 3),
-        unit : cartItems[i].item.unit,
-        price:cartItems[i].item.price});
-      }
-    }
-    return globalPromotions;
-  }
   function getPromotionPrice(globalPromotions){
     var promotionPrice = 0;
     for(var i = 0; i<globalPromotions.length; i++){
