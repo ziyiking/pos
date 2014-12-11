@@ -3,7 +3,7 @@ function CartItems(items,count) {
   this.count = count;
 }
 
-CartItems.getCartItems = function(tags){
+CartItems.getCartItems = function (tags){
   var cartItems = [];
   var allItems = loadAllItems();
   for(var i = 0; i < tags.length; i++){

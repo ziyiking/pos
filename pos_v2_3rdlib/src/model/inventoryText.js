@@ -2,7 +2,7 @@ function Inventory(cart) {
   this.cart = cart;
 }
 
-Inventory.getInventoryText = function(cartItems) {
+Inventory.getInventoryText = function (cartItems) {
   var currTime = moment().format('YYYY年MM月DD日 HH:mm:ss');
   var globalPromotions = Promotion.getGlobalPromotions(cartItems);
 
@@ -25,4 +25,4 @@ Inventory.getInventoryText = function(cartItems) {
 
 
   return inventoryText;
-}
+};
