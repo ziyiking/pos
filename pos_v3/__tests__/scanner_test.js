@@ -2,10 +2,10 @@ jest.autoMockOff();
 jest.dontMock('lodash');
 
 describe('Scanner', function() {
-  var Scanner ;
+  var Scanner,scanner;
   beforeEach(function () {
     Scanner = require('../src/model/scanner.js');
-  var scanner = new Scanner();
+  scanner = new Scanner();
   });
 
   describe('#addCartItems',function() {
@@ -31,7 +31,7 @@ describe('Scanner', function() {
       var result = scanner.addCartItems([{ 'ITEM000000' : 20 },
                                          { 'ITEM000010' : 20 }]);
       expect(result[0].item.name).toEqual('可口可乐350ml');
-      expect(result[0].item.name).toEqual('可口可乐550ml');
+      expect(result[1].item.name).toEqual('可口可乐550ml');
     });
 
     it('should return two cartItems_price',function() {

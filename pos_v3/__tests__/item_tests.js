@@ -1,4 +1,4 @@
-jest.dontMock('../src/model/items.js');
+jest.dontMock('../src/model/item.js');
 describe('Item',function() {
   describe('all',function() {
     it('should return all item',function() {
