@@ -14,12 +14,6 @@ describe('Scanner', function() {
       expect(result[0].item.brand).toEqual('可口可乐');
     });
 
-    // it('should return two cartItems', function() {
-    //   var result = scanner.addCartItems([{ 'ITEM000000' : 20 },
-    //                                      { 'ITEM000010' : 20 }]);
-    //   expect(result.length).tobe(2);
-    // });
-
     it('should return two cartItems_brand',function() {
       var result = scanner.addCartItems([{ 'ITEM000000' : 20 },
                                          { 'ITEM000010' : 20 }]);
