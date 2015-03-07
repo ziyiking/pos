@@ -8,7 +8,7 @@ describe('Scanner', function() {
   var scanner = new Scanner();
   });
 
-  describe('addCartItems',function() {
+  describe('#addCartItems',function() {
     it('should return one cartItem is a brand', function() {
       var  result = scanner.addCartItems([{'ITEM000000': 20}]);
       expect(result[0].item.brand).toEqual('可口可乐');
