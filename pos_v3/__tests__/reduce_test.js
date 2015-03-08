@@ -15,8 +15,8 @@ describe('Reduce',function() {
                         'brand' : '云山'},
                         'count' : 12,
                         'promotion' : true,
-                        // getPrice : getPrice}];
-                      }];
+                        getPrice : getPrice}];
+
     conditions = 100;
     reduceMoney = 3;
   });
@@ -30,8 +30,8 @@ describe('Reduce',function() {
 
   describe(',getAllsuperReduceText',function() {
     it('should return savemoney information',function() {
-      var result = Reduce.getAllsuperReduceText(commonCartItems,conditions,reduceMoney);
-      expect(result).toBe('名称:满100减3，金额：3.00元\n') ;
+      var result = Reduce.getAllSuperReduceText(commonCartItems,conditions,reduceMoney);
+      expect(result).toBe('名称：满100减3，金额：3.00元\n') ;
     });
   });
 });

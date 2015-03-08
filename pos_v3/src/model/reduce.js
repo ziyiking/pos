@@ -9,7 +9,6 @@ Reduce.getAllSuperReduceText = function (commonCartItems, conditions, reduceMone
     var saveMoney = this.calculateSaveMoney(commonCartItems, conditions, reduceMoney);
     return '名称：满' + conditions + '减' + reduceMoney +
     '，金额：' + saveMoney.toFixed(2) + '元\n';
-
   } else {
     return '';
   }
