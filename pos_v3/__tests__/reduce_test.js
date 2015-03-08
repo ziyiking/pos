@@ -3,7 +3,7 @@ jest.dontMock('lodash');
 
 describe('Reduce',function() {
   var Reduce,commonCartItems,conditions,reduceMoney;
-  beoforeEach(function() {
+  beforeEach(function() {
     Reduce = require('../src/model/reduce.js');
     getPrice = jest.genMockFn();
     getPrice.mockReturnValue(15);
@@ -23,7 +23,7 @@ describe('Reduce',function() {
 
   describe(',calculateSaveMoney',function() {
     it('should retrun savemoney',function() {
-      var result = Reduce.calcalateSaveMoney(commonCartItems,conditions,reduceMoney);
+      var result = Reduce.calculateSaveMoney(commonCartItems,conditions,reduceMoney);
       expect(result).toBe(3);
     });
   });
