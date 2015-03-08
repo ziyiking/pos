@@ -30,8 +30,8 @@ describe('Reduce',function() {
 
   describe(',getAllsuperReduceText',function() {
     it('should return savemoney information',function() {
-      var result = Reduce.getALLsuperReduceText(commonCartItems,conditions,reduceMoney);
-      expect(result).toBe('名称：满100减3，金额：3.00元\n') ;
+      var result = Reduce.getAllsuperReduceText(commonCartItems,conditions,reduceMoney);
+      expect(result).toBe('名称:满100减3，金额：3.00元\n') ;
     });
   });
 });

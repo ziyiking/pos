@@ -7,19 +7,20 @@ function Discount() {
 Discount.getBrandText = function (brandCartItems,brandName,discountrate) {
   var brandSaveMoney = 0;
   var saveRate = (1-discountrate).toFixed(2);
-  _.forEach(brandCartItems,function(barndCartItem) {
+  _.forEach(brandCartItems,function(brandCartItem) {
     brandCartItem.promotion = true;
+
     if(brandCartItem.promotionTotal) {
       brandSaveMoney += brandCartItem.promotionTotal * saveRate;
     }
     else{
-      brandSaveMoney += brandCartItem.count * brandCartItem.getPrice() * savaRate;
+      brandSaveMoney += brandCartItem.count * brandCartItem.getPrice() * saveRate;
     }
   });
 
   brandCartItems[0].saveMoney += brandSaveMoney;
 
-  return '名称:' + brandName + '品牌打折，金额：' + brandSaveMoney.toFixed(2) + '元\n';
+  return '名称：' + brandName + '品牌打折，金额：' + brandSaveMoney.toFixed(2) + '元\n';
 };
 
 Discount.getItemText = function (itemCartItems,itemName,discountrate) {

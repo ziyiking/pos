@@ -8,7 +8,7 @@ function main(){
 
   var scanner = new Scanner();
   var cartItems = scanner.addCartItems(tag);
-  var shoppinglist = new shoppinglist();
+  var shoppingList = new ShoppingList();
   var discountmethod = 4;
   var print = shoppinglist.printInventory(cartItems,discountmethod);
   console.log(print);

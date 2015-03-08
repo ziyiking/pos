@@ -1,6 +1,6 @@
-var _= require('lodash');
+var _ = require('lodash');
 
-function Reduce() {
+function Reduce () {
 
 }
 
