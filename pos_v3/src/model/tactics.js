@@ -3,11 +3,11 @@ var Promotion = require('./promotion.js');
 var Discount = require('./discount.js');
 var Reduce = require('./reduce.js');
 
-function Discountmethod () {
+function Tactics () {
 
 }
 
-Discountmethod.getDiscountmethodOne =  function (cartItems) {
+Tactics.getTacticsOne =  function (cartItems) {
   var promotionList = '';
   promotionList += this.getBrandsPromotionList(cartItems);
 
@@ -18,7 +18,7 @@ Discountmethod.getDiscountmethodOne =  function (cartItems) {
   return promotionList;
 };
 
-Discountmethod.getDiscountmethodTwo = function (cartItems) {
+Tactics.getTacticsTwo = function (cartItems) {
   var promotionList = '';
   promotionList += this.getItemsPromotionList(cartItems);
 
@@ -30,7 +30,7 @@ Discountmethod.getDiscountmethodTwo = function (cartItems) {
   return promotionList;
 };
 
-Discountmethod.getDiscountmethodThree = function (cartItems) {
+Tactics.getTacticsThree = function (cartItems) {
   var promotionList = '';
   promotionList += this.getItemsPromotionList(cartItems);
 
@@ -45,11 +45,11 @@ Discountmethod.getDiscountmethodThree = function (cartItems) {
   return promotionList;
 };
 
-Discountmethod.getDiscountmethodFour = function (cartItems) {
+Tactics.getTacticsFour = function (cartItems) {
   var promotionList = '';
   promotionList += this.getItemsPromotionList(cartItems);
 
-  Discountmethod.removePromotionTotal(cartItems);
+  Tactics.removePromotionTotal(cartItems);
   promotionList += this.getBrandsPromotionList(cartItems);
 
   var itemReduceCartItems = this.getItemReduceCarItems(cartItems, '果粒橙');
@@ -63,7 +63,7 @@ Discountmethod.getDiscountmethodFour = function (cartItems) {
   return promotionList;
 };
 
-Discountmethod.removePromotionTotal = function (cartItems) {
+Tactics.removePromotionTotal = function (cartItems) {
   _.forEach(cartItems, function (cartItem) {
     if (cartItem.promotionTotal) {
       cartItem.promotionTotal = 0;
@@ -71,27 +71,27 @@ Discountmethod.removePromotionTotal = function (cartItems) {
   });
 };
 
-Discountmethod.getItemsPromotionList = function (cartItems) {
+Tactics.getItemsPromotionList = function (cartItems) {
   var itemsPromotionList = '';
   _.forEach(Promotion.items(), function(item) {
-    var itemCartItems = Discountmethod.getItemsCartItems(cartItems, item);
+    var itemCartItems = Tactics.getItemsCartItems(cartItems, item);
     itemsPromotionList += Discount.getItemText(itemCartItems, item.name, item.rate);
   });
 
   return itemsPromotionList;
 };
 
-Discountmethod.getBrandsPromotionList = function (cartItems) {
+Tactics.getBrandsPromotionList = function (cartItems) {
   var brandsPromotionList = '';
   _.forEach(Promotion.brands(), function(brand) {
-    var brandCartItems = Discountmethod.getBrandCartItems(cartItems, brand);
+    var brandCartItems = Tactics.getBrandCartItems(cartItems, brand);
     brandsPromotionList += Discount.getBrandText(brandCartItems, brand.name, brand.rate);
   });
 
   return brandsPromotionList;
 };
 
-Discountmethod.getItemsCartItems = function (cartItems, item) {
+Tactics.getItemsCartItems = function (cartItems, item) {
   var itemCartItems = [];
   _.forEach(cartItems, function(cartItem) {
     if(cartItem.getName() === item.name) {
@@ -102,7 +102,7 @@ Discountmethod.getItemsCartItems = function (cartItems, item) {
   return itemCartItems;
 };
 
-Discountmethod.getBrandCartItems = function (cartItems, brand) {
+Tactics.getBrandCartItems = function (cartItems, brand) {
   var brandCartItems = [];
   _.forEach(cartItems, function(cartItem) {
     if (cartItem.getBrand() === brand.name) {
@@ -113,7 +113,7 @@ Discountmethod.getBrandCartItems = function (cartItems, brand) {
   return brandCartItems;
 };
 
-Discountmethod.getNotPromotionCartItems = function (cartItems) {
+Tactics.getNotPromotionCartItems = function (cartItems) {
   var notPromotionCartItems = [];
   _.forEach(cartItems, function (cartItem) {
     if(!cartItem.promotion) {
@@ -124,7 +124,7 @@ Discountmethod.getNotPromotionCartItems = function (cartItems) {
   return notPromotionCartItems;
 };
 
-Discountmethod.getCommonCartItems = function (notPromotionCartItems, itemName) {
+Tactics.getCommonCartItems = function (notPromotionCartItems, itemName) {
   var commonCartItems = [];
   _.forEach(notPromotionCartItems, function (notPromotionCartItem) {
     if(notPromotionCartItem.getName() !== itemName) {
@@ -134,7 +134,7 @@ Discountmethod.getCommonCartItems = function (notPromotionCartItems, itemName) {
   return commonCartItems;
 };
 
-Discountmethod.getBrandReduceCartItems = function (cartItems, reduceName) {
+Tactics.getBrandReduceCartItems = function (cartItems, reduceName) {
   var reduceCartItems = [];
   _.forEach(cartItems, function (cartItem) {
     if (cartItem.getBrand() === reduceName) {
@@ -146,7 +146,7 @@ Discountmethod.getBrandReduceCartItems = function (cartItems, reduceName) {
   return reduceCartItems;
 };
 
-Discountmethod.getItemReduceCarItems = function (cartItems, reduceName) {
+Tactics.getItemReduceCarItems = function (cartItems, reduceName) {
   var reduceCartItems = [];
   _.forEach(cartItems, function (cartItem) {
     if (cartItem.getName() === reduceName) {
@@ -158,4 +158,4 @@ Discountmethod.getItemReduceCarItems = function (cartItems, reduceName) {
   return reduceCartItems;
 };
 
-module.exports = Discountmethod;
+module.exports = Tactics;

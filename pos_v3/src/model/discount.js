@@ -4,9 +4,9 @@ function Discount() {
 
 }
 
-Discount.getBrandText = function (brandCartItems,brandName,discountrate) {
+Discount.getBrandText = function (brandCartItems,brandName,rate) {
   var brandSaveMoney = 0;
-  var saveRate = (1-discountrate).toFixed(2);
+  var saveRate = (1-rate).toFixed(2);
   _.forEach(brandCartItems,function(brandCartItem) {
     brandCartItem.promotion = true;
 
@@ -23,10 +23,10 @@ Discount.getBrandText = function (brandCartItems,brandName,discountrate) {
   return '名称：' + brandName + '品牌打折，金额：' + brandSaveMoney.toFixed(2) + '元\n';
 };
 
-Discount.getItemText = function (itemCartItems,itemName,discountrate) {
+Discount.getItemText = function (itemCartItems,itemName,rate) {
   var itemSaveMoney = 0;
   var money = 0;
-  var saveRate = (1 - discountrate).toFixde(2);
+  var saveRate = (1 - rate).toFixed(2);
   _.forEach(itemCartItems,function(itemCartItem) {
     itemCartItem.promotion = true;
     money += itemCartItem.count * itemCartItem.getPrice();
@@ -39,9 +39,9 @@ Discount.getItemText = function (itemCartItems,itemName,discountrate) {
 
 };
 
-Discount.getAllcountText = function (cartItems, discountrate) {
+Discount.getAllSuperDescountText = function (cartItems, rate) {
   var allSaveMoney = 0;
-  var saveRate = (1 - discountrate).toFixed(2);
+  var saveRate = (1 - rate).toFixed(2);
   _.forEach(cartItems, function (cartItem) {
     allSaveMoney += (cartItem.getSubTotal() - cartItem.saveMoney) * saveRate;
   });

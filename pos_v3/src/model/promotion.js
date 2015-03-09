@@ -1,6 +1,6 @@
-function Promotion(name,discountrate) {
+function Promotion(name,rate) {
   this.name = name;
-  this.discountrate = discountrate;
+  this.rate = rate;
 }
 
 Promotion.brands = function() {
@@ -11,6 +11,8 @@ Promotion.brands = function() {
 
 Promotion.items = function() {
   return [
-    new Promotion('可口可乐',0.95)
+    new Promotion('可口可乐350ml',0.95)
   ];
 };
+
+module.exports = Promotion;

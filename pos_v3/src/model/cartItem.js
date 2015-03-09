@@ -1,7 +1,7 @@
 function CartItem(item,count) {
   this.item = item;
   this.count = count;
-  // this.promotion = false;
+  this.promotion = false;
   this.savemoney = 0;
   this.promotionTotal = 0;
 }

@@ -1,3 +1,6 @@
+var Scanner = require('./model/scanner.js');
+var Shoppinglist = require('./model/shoppinglist.js');
+
 function main(){
   var tag = [ { 'ITEM000000' : 20 },
               { 'ITEM000010' : 30 },
@@ -8,9 +11,9 @@ function main(){
 
   var scanner = new Scanner();
   var cartItems = scanner.addCartItems(tag);
-  var shoppingList = new ShoppingList();
-  var discountmethod = 4;
-  var print = shoppinglist.printInventory(cartItems,discountmethod);
+  var shoppinglist = new Shoppinglist();
+  var tacticsType = 4;
+  var print = shoppinglist.printInventory(cartItems,tacticsType);
   console.log(print);
 }
 main();

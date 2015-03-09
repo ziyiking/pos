@@ -1,37 +1,37 @@
 var _ = require('lodash');
 var moment = require('moment');
-var Discountmethod = require('./discountmethod.js');
+var Tactics = require('./tactics.js');
 
-function ShoppingList () {
+function Shoppinglist () {
 
 }
 
-ShoppingList.prototype.getCartItemsList = function (cartItems) {
+Shoppinglist.prototype.getCartItemsList = function (cartItems) {
   var cartItemsList = '';
   _.forEach(cartItems, function(cartItem) {
     cartItemsList += cartItem.getCartItemText();
   });
-
+  
   return cartItemsList;
 };
 
-ShoppingList.prototype.getPromotionList = function (cartItems, DiscountmethodType) {
+Shoppinglist.prototype.getPromotionList = function (cartItems, tacticsType) {
   var promotionList = '';
-  switch (DiscountmethodType) {
+  switch (tacticsType) {
     case 1 :
-      promotionList += Discountmethod.getDiscountmethodOne(cartItems);
+      promotionList += Tactics.getTacticsOne(cartItems);
       break;
 
       case 2 :
-        promotionList += Discountmethod.getDiscountmethodTwo(cartItems);
+        promotionList += Tactics.getTacticsTwo(cartItems);
         break;
 
         case 3 :
-          promotionList += Discountmethod.getDiscountmethodThree(cartItems);
+          promotionList += Tactics.getTacticsThree(cartItems);
           break;
 
           case 4 :
-            promotionList += Discountmethod.getDiscountmethodFour(cartItems);
+            promotionList += Tactics.getTacticsFour(cartItems);
             break;
 
             default :
@@ -40,7 +40,7 @@ ShoppingList.prototype.getPromotionList = function (cartItems, DiscountmethodTyp
           return promotionList;
         };
 
-        ShoppingList.prototype.getSaveMoney = function (cartItems) {
+        Shoppinglist.prototype.getSaveMoney = function (cartItems) {
           var saveMoney = 0;
           _.forEach(cartItems, function (cartItem) {
             saveMoney += cartItem.saveMoney;
@@ -48,11 +48,11 @@ ShoppingList.prototype.getPromotionList = function (cartItems, DiscountmethodTyp
           return saveMoney;
         };
 
-        ShoppingList.prototype.getSaveMoneyText = function (cartItems) {
+        Shoppinglist.prototype.getSaveMoneyText = function (cartItems) {
           return '节省：' + this.getSaveMoney(cartItems).toFixed(2) + '(元)\n';
         };
 
-        ShoppingList.prototype.getTotalMoney = function (cartItems) {
+        Shoppinglist.prototype.getTotalMoney = function (cartItems) {
           var totalMoney = 0;
           _.forEach(cartItems, function (cartItem) {
             totalMoney += cartItem.getSubTotal();
@@ -62,17 +62,17 @@ ShoppingList.prototype.getPromotionList = function (cartItems, DiscountmethodTyp
           return totalMoney;
         };
 
-        ShoppingList.prototype.getTotalMoneyText = function (cartItems) {
+        Shoppinglist.prototype.getTotalMoneyText = function (cartItems) {
           return '总计：' + this.getTotalMoney(cartItems).toFixed(2) + '(元)\n';
         };
 
-        ShoppingList.prototype.printInventory = function (cartItems, DiscountmethodType) {
+        Shoppinglist.prototype.printInventory = function (cartItems, tacticsType) {
           var print ='***<没钱赚商店>购物清单***\n' + '打印时间：' +
           moment().format('YYYY年MM月DD日 HH:mm:ss') +
           '\n\n----------------------\n' +
           this.getCartItemsList(cartItems) +
           '\n----------------------\n' + '优惠信息：\n' +
-          this.getPromotionList(cartItems, DiscountmethodType) +
+          this.getPromotionList(cartItems, tacticsType) +
           '\n----------------------\n' +
           this.getTotalMoneyText(cartItems) +
           this.getSaveMoneyText(cartItems) +
@@ -80,4 +80,4 @@ ShoppingList.prototype.getPromotionList = function (cartItems, DiscountmethodTyp
           return print;
         };
 
-        module.exports = ShoppingList;
+        module.exports = Shoppinglist;
