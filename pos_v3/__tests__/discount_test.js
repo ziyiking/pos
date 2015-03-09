@@ -16,8 +16,8 @@ describe('Discount',function() {
                             'count' : 20,
                             getPrice : getPrice}];
       var brandName = '可口可乐';
-      var discountrate = 0.9;
-      var result = Discount.getBrandText(brandCartItems,brandName,discountrate);
+      var rate = 0.9;
+      var result = Discount.getBrandText(brandCartItems,brandName,rate);
       expect(result).toEqual('名称：可口可乐品牌打折，金额：6.00元\n');
     });
   });

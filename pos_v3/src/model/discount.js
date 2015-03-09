@@ -45,7 +45,7 @@ Discount.getAllSuperDescountText = function (cartItems, rate) {
   _.forEach(cartItems, function (cartItem) {
     allSaveMoney += (cartItem.getSubTotal() - cartItem.saveMoney) * saveRate;
   });
-
+  
   cartItems[0].saveMoney += allSaveMoney;
 
   return '名称：' + rate * 10 + '折，金额：' + allSaveMoney.toFixed(2) + '元\n';
